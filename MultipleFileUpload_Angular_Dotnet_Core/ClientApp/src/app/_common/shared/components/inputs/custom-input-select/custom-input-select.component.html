@@ -1,0 +1,12 @@
+<div class="form-group" [class.is-invalid]="inputError">
+  <label [class.required]="isRequired">{{label}}:</label>
+  <select class="form-control" [formControlName]="controlName" (blur)="onBlur()"
+    [ngClass]="{'is-invalid':inputError ,'is-valid':!inputError && inputValue }" #ref>
+    <option *ngFor="let item of itemList" [value]="item[valueProp]" [style.color]="item[valueProp] == 'select' ?'#999999':''">
+      {{item[displayProp]}}
+    </option>
+  </select>
+  <span class=" invalid-feedback" *ngIf="inputError">
+    {{inputError}}
+  </span>
+</div>

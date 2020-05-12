@@ -1,0 +1,11 @@
+<div class="form-group" [class.is-invalid]="inputError">
+    <label>{{label}}:</label><br>
+    <div class="form-check-inline" *ngFor="let item of itemList">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" [formControlName]="controlName" [value]="item">{{item}}
+      </label>
+    </div>
+    <span class="invalid-feedback" *ngIf="inputError">
+      {{inputError}}
+    </span>
+  </div>

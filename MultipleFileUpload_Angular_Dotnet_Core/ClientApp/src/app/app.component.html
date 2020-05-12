@@ -1,0 +1,56 @@
+<div class="">
+  <div class="col-md-8 mx-auto">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input-text controlName="ProductName"> </input-text>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-8">
+              Products Type
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn btn-primary pull-right" (click)="addProductButtonClick()">
+                Add Product Type
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div formArrayName="ProductTypes" *ngFor="let product of form.get('ProductTypes').controls; let i = index">
+            <div [formGroupName]="i">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <input-text  controlName="Description" formArrayPart="ProductTypes"
+                    [formArrayIndex]="i"> 
+                  </input-text>
+
+                </div>
+                <div class="col-md-6">
+                  <input-text controlName="Volume" formArrayPart="ProductTypes" [formArrayIndex]="i" label="volume">
+                  </input-text>
+                </div>
+                <div class="col-md-1 form-group">
+                  <button type="button" class="btn btn-danger btn-sm pull-right" title="Delete Skill"
+                    (click)="removeProductButtonClick(i)">
+                    <span class="fa fa-minus"></span>
+                  </button>
+                </div>
+                <div class="col-md-12">
+                  <custom-file-drop (onFileListChange)="onFileListChange($event,i)"></custom-file-drop>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <span> <button type="submit" class="btn btn-info float-right" [disabled]="!form.valid">Submit</button></span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

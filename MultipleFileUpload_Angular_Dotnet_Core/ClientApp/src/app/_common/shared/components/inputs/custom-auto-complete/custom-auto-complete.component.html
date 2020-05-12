@@ -1,0 +1,11 @@
+<div class="form-group" [class.is-invalid]="inputError">
+  <label [class.required]="isRequired">{{label | titlecase}}:</label>
+  <input id="typeahead-http" type="text" class="form-control" [class.is-invalid]="searchFailed"
+    [formControlName]="controlName" [ngbTypeahead]="search" [placeholder]="placeHolder" [resultFormatter]="formatter"
+    [inputFormatter]="formatter" (blur)="onBlur()"/>
+  <small *ngIf="searching" class="form-text text-muted">searching...</small>
+  <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+  <span class=" invalid-feedback" *ngIf="inputError">
+    {{inputError}}
+  </span>
+</div>

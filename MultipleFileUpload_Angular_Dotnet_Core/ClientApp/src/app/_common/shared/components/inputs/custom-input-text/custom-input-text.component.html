@@ -1,0 +1,8 @@
+<div class="form-group" [class.is-invalid]="inputError">
+  <label [class.required]="isRequired">{{label | titlecase}}:</label>
+  <input type="text" class="form-control" [formControlName]="controlName" (blur)="onBlur()"
+    [ngClass]="{'is-invalid':inputError ,'is-valid':!inputError && inputValue }" #ref placeholder="{{placeHolder}}">
+  <span class=" invalid-feedback" *ngIf="inputError">
+    {{inputError}}
+  </span>
+</div>
